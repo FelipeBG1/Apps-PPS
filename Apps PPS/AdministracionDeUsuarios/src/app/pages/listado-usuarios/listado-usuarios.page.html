@@ -1,0 +1,40 @@
+<div *ngIf="!this.dato">
+  <div [ngClass]="this.perfil == 'admin' ? 'global' : 'global2'">
+    <div id="lista">
+      <div class="contenedor">
+        <div style="margin-bottom: 10px;" *ngFor="let item of this.usuarios">
+          <ion-card>
+            <ion-card-header>
+              <ion-item>
+                <ion-avatar slot="start" style="width: 50px; height: 50px;">
+                  <img src="{{item.pathFoto}}" />
+                </ion-avatar>
+                <ion-label>
+                  <h3>{{item.nombre}} {{item.apellido}}</h3>
+                </ion-label>
+              </ion-item>
+              <p style="padding-left: 7%;">{{item.email}}</p>
+              <p style="padding-left: 7%;">{{item.dni}}</p>
+            </ion-card-header>      
+          </ion-card>
+        </div>
+      </div>  
+    </div>
+  </div>
+  
+  <div align="center" style="margin-bottom: 5%; margin-top: 10%; padding-left: 2%; padding-right: 2%;" *ngIf="this.perfil == 'admin'">       
+    <ion-button fill="clear" expand="block" style="border-radius: 5px; background-color: #000000b6; color: white;" (click)="irAgregarUsuario()">Agregar Usuario</ion-button>
+  </div>
+  <div align="center" style="padding-left: 2%; padding-right: 2%;">       
+    <ion-button fill="clear" expand="block" style="border-radius: 5px; background-color: #ffffffb6; color: black;" (click)="logOut()">Cerrar Sesión</ion-button>
+  </div>
+  
+  <div align="center" style="margin-top: 4%;">
+    <ion-spinner name="crescent" *ngIf="this.as.loading" color="dark"></ion-spinner>
+  </div> 
+</div>
+
+
+<div *ngIf="this.dato">
+ <app-agregar-usuario (atrasEvent)="cambiarDato($event)"></app-agregar-usuario>
+</div>

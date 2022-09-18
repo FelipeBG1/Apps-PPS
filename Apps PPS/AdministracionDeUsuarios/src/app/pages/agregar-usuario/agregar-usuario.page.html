@@ -1,0 +1,94 @@
+<div>
+  <form [formGroup]='form' (ngSubmit)="this.agregarUsuario()">
+    <ion-list lines="full" style="background-color: rgba(0, 0, 0, 0); padding-left: 2%; padding-right: 2%;">
+      <ion-item class="items" style="margin-bottom: 2%">
+        <ion-label position="floating" style="font-size: 20px;">Nombre/s</ion-label>
+        <ion-input type="text" formControlName='nombre' name="nombre" required (ionFocus)="cambiarFoco(1)" (ionBlur)="cambiarFoco(2)"></ion-input>
+        <small class="invalid" *ngIf="form.controls.nombre.errors?.minlength">El nombre debe tener mínimo 2 caracteres</small>
+        <small class="invalid" *ngIf="form.controls.nombre.errors?.required && form.controls.nombre.touched">El nombre es requerido</small>
+      </ion-item>
+      <ion-item class="items" style="margin-bottom: 2%">
+        <ion-label position="floating" style="font-size: 20px;">Apellidos/s</ion-label>
+        <ion-input type="text" formControlName='apellido' name="apellido" required color="dark" (ionFocus)="cambiarFoco(1)" (ionBlur)="cambiarFoco(2)"></ion-input>
+        <small class="invalid" *ngIf="form.controls.apellido.errors?.minlength">El apellido debe tener mínimo 2 caracteres</small>
+        <small class="invalid" *ngIf="form.controls.apellido.errors?.required && form.controls.apellido.touched">El apellido es requerido</small>
+       
+      </ion-item>
+      <ion-item class="items" style="margin-bottom: 2%">
+        <ion-label position="floating" style="font-size: 20px;">DNI</ion-label>
+        <ion-input inputmode="numeric" formControlName='dni' name="dni" required (ionFocus)="cambiarFoco(1)" (ionBlur)="cambiarFoco(2)"></ion-input>
+        <small class="invalid" *ngIf="form.controls.dni.errors?.minlength || form.controls.dni.errors?.maxlength">El dni debe tener 8 caracteres</small>
+        <small class="invalid" *ngIf="form.controls.dni.errors?.required && form.controls.dni.touched">El dni es requerido</small>
+        
+      </ion-item>
+      <ion-item class="items" style="margin-bottom: 2%">
+        <ion-label position="floating" style="font-size: 20px;">Correo</ion-label>
+        <ion-input type="email" formControlName='email' name="email" required (ionFocus)="cambiarFoco(1)" (ionBlur)="cambiarFoco(2)"></ion-input>
+        <small class="invalid" *ngIf="form.controls.email.errors?.email">No es un correo válido</small> 
+        <small class="invalid" *ngIf="form.controls.email.errors?.required && form.controls.email.touched">El correo es requerido</small>
+       
+      </ion-item>
+      <ion-item class="items">
+        <ion-label position="floating" style="font-size: 20px;">Contraseña</ion-label>
+        <ion-input clear-on-edit="false" type="password" formControlName='password' name="password" required (ionFocus)="cambiarFoco(1)" (ionBlur)="cambiarFoco(2)"></ion-input>
+        <small class="invalid" *ngIf="form.controls.password.errors?.minlength">La contraseña debe tener mínimo 6 caracteres</small>
+        <small class="invalid" *ngIf="form.controls.password.errors?.required && form.controls.password.touched">La contraseña es requerida</small>
+        
+      </ion-item>
+    </ion-list>
+  </form>
+  <div style="padding-left: 2%; padding-right: 2%;">
+
+    <ion-item class="items" style="margin-bottom: 2%">
+      <ion-label position="floating" style="font-size: 20px;">Confirmar contraseña</ion-label>
+      <ion-input clear-on-edit="false" type="password" [(ngModel)]="passwordAConfirmar" (ngModelChange)="confirmar()" required (ionFocus)="cambiarFoco(1)" (ionBlur)="cambiarFoco(2)"></ion-input>
+      <small class="invalid" *ngIf="this.confirmada">La contraseña es no coincide</small>
+    </ion-item>
+    <ion-item class="items" align="center">
+      <ion-button fill="clear" expand="block" size="medium" [disabled]='this.form.invalid || !confirmada2' style="border-radius: 5px; background-color: #FDD304; color: black;" (click)="agregarFoto()">Agregar Foto</ion-button>
+    </ion-item>
+    <div align="center" style="margin-bottom: 3%;">
+      <ion-button fill="clear" style="border-radius: 5px; background-color: #9c0757b6; color: white;" (click)="leerDNI()">Escanear DNI</ion-button>
+    </div>
+    <div align="center" >       
+      <ion-button fill="clear" expand="block" [disabled]='!fotoSubida' style="border-radius: 5px; background-color: #FDD304; color: black;" (click)="agregarUsuario()">Agregar Usuario</ion-button>
+    </div>
+   <!--  <div align="center" style="margin-bottom: 5%;">       
+      <ion-button fill="clear" expand="block" style="border-radius: 5px; background-color: #000000b6; color: white;" (click)="volverAtras(false)">Atras</ion-button>
+    </div> -->
+   <!--  <div align="center" style="padding-left: 2%; padding-right: 2%;">       
+      <ion-button fill="clear" expand="block" style="border-radius: 5px; background-color: #ffffffb6; color: black;" (click)="logOut()">Cerrar Sesión</ion-button>
+    </div> -->
+    <div align="center" >     
+      <ion-avatar slot="start" style="width: 150px; height: 150px;" *ngIf="this.webPath == ''">
+        <ion-icon name="person-circle-outline" style="width: 150px; height: 150px;"></ion-icon>
+      </ion-avatar>  
+      <ion-avatar slot="start" style="width: 130px; height: 130px; margin-top: 10px;" *ngIf="this.webPath != ''">
+        <img [src]="this.webPath"  width="130px" height="130px"/>
+      </ion-avatar>
+    </div>
+  </div>
+
+
+
+  <div align="center">
+    <ion-spinner name="crescent" *ngIf="this.as.loading" color="dark"></ion-spinner>
+  </div> 
+</div>
+
+<div *ngIf="!this.foco">
+  <ion-fab vertical="bottom" horizontal="end" >
+    <ion-fab-button color="dark">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button color="dark" style="width: 50px; height: 50px;">
+        <ion-icon style="font-size: 30px;" name="exit-outline" (click)="logOut()"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="dark" style="width: 50px; height: 50px;">
+        <ion-icon style="font-size: 30px;" name="arrow-back-circle-sharp" (click)="volverAtras(false)"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</div>
+

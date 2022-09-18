@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pps-apps-3f016": {
+      "hosting": {
+        "app": [
+          "pps-apps-3f016"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pps-apps-3f016"
+  }
+}

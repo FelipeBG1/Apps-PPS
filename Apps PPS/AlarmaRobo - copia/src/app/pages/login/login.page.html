@@ -1,0 +1,88 @@
+<ion-app style="overflow: hidden;">
+  <ion-content>
+      <div class="fondo">
+        
+        <div align="center" style="padding: 15px;">
+          <div>
+            <ion-spinner name="crescent" *ngIf="this.as.loading" color="dark"></ion-spinner>
+          </div>
+        <h1 style="font-size: 40px; text-align: center; margin-top: 5%; color: white;">
+          Alarma de Robo
+        </h1>
+        <img src="../../../assets/icono centro.png" width="110px" height="110px" style="margin-top: 20px;"/>
+        
+        <!--
+          <ion-row style="text-align: center; margin-top: 10%;">
+                   
+            <ion-col>
+              <ion-button fill="outline" (click)='cargarDatos(1)' style="--border-radius: 20px; --border-color: #ed442a; color: white;">Anónimo</ion-button>              
+            </ion-col>
+            <ion-col>         
+              <ion-button fill="outline" (click)='cargarDatos(2)' style="--border-radius: 20px; --border-color: #ed442a; color: white;">Casual</ion-button>     
+            </ion-col>
+            <ion-col>
+              <ion-button fill="outline" (click)='cargarDatos(3)' style="--border-radius: 20px; --border-color: #ed442a; color: white;">Administrador</ion-button>  
+            </ion-col>  
+            
+          </ion-row>
+        -->
+
+        <div class="grupo" >
+          <ion-grid style="display: flex; flex-flow: column;">
+          <ion-row style="flex-grow: 1;">
+            <ion-col>
+              <mat-slide-toggle class="boton" [checked]="checkedAnoni" (change)="onChangeAnonimo($event)">Anónimo</mat-slide-toggle>
+            </ion-col>
+            <ion-col>
+              <mat-slide-toggle class="boton" [checked]="checkedInvi" (change)="onChangeCasual($event)">Invitado</mat-slide-toggle>
+            </ion-col>
+            <ion-col>
+              <mat-slide-toggle class="boton" [checked]="checkedAdmin" (change)="onChangeAdmin($event)">Administrador</mat-slide-toggle>
+            </ion-col>
+          </ion-row> 
+        </ion-grid>       
+        </div>
+
+        <div style="padding-left: 2%; padding-right: 2%; margin-bottom: 10%; margin-top: 10%;">
+          <ion-button fill="clear" expand="block" [disabled]='form.invalid' (click)="login()" style="border-radius: 30px; background-color: #ed442a; color: white;">
+            <ion-text>Iniciar Sesión</ion-text>
+          </ion-button>
+    
+      </div>
+
+        <div style="margin-top: 10%;">
+          <form [formGroup]='form' (ngSubmit)="this.login()">
+        
+              <div align="start" style="margin-left: 5%;">
+                <ion-label style="font-size: larger;">Correo</ion-label>            
+              </div>
+          
+              <ion-item style="--border-radius: 30px; margin-top: 5%; padding-left: 3%; padding-right: 3%;" color="dark">
+                <ion-input type="email" placeholder="Correo"  formControlName='email' name="email" required></ion-input>
+              </ion-item>
+             
+              <div style="margin-bottom: 5%;">
+                <small class="invalid" *ngIf="form.controls.email.errors?.required && form.controls.email.touched">El correo es requerido</small>
+                <small class="invalid" *ngIf="form.controls.email.errors?.email">No es un correo válido</small>
+              </div>
+
+       
+              <div align="start" style="margin-left: 5%;">
+                <ion-label style="font-size: larger;">Contraseña</ion-label>   
+              </div>
+              
+              <ion-item style="margin-top: 20px; --border-radius: 30px; margin-top: 5%; padding-left: 3%; padding-right: 3%;" color="dark">
+                <ion-input type="password" placeholder="Contraseña" formControlName='password' name="password" required></ion-input>
+              </ion-item>
+              <small class="invalid" *ngIf="form.controls.password.errors?.required && form.controls.password.touched">La contraseña es requerida</small>
+              <small class="invalid" *ngIf="form.controls.password.errors?.minlength">La contraseña debe tener 4 caracteres o más</small>
+            
+          </form>   
+    
+        </div>
+    
+      </div>
+    </div>
+    </ion-content>
+</ion-app>
+

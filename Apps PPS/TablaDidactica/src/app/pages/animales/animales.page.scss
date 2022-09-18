@@ -1,0 +1,70 @@
+.boton
+{
+
+   /*  background-image:url('../../../assets/ansie-potgieter-GV2LxPJArgQ-unsplash.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden; */
+    /*
+    height: 120px; 
+    width: 340px;
+    */
+
+    height: 100%;
+}
+
+.caja2
+{
+    border-style: solid;
+
+    border-color: rgba(255, 255, 255, 0.463);
+    border-radius: 5px;
+    box-shadow: 4px 2px 8px 8px #67055d;
+    background-color: #d351c6;
+}
+
+.caja
+{
+    border-style: solid;
+
+    border-color: rgba(255, 255, 255, 0.463);
+    border-radius: 5px;
+    height: 200px;
+    padding: 20px;
+    padding-bottom: 20px;
+    box-shadow: 4px 2px 8px 8px #67055d;
+    background-color: #d351c6;
+}
+
+.gridVertical
+{
+    height: 90%; 
+    display: flex; 
+    flex-flow: column; 
+    padding-top: 20px;
+}
+
+.gridHorizontal
+{
+    height: 89%;
+    display: flex;
+    flex-flow: column;
+}
+
+@media (min-height:600px){
+    .gridVertical{
+        display: flex; 
+    }
+    .gridHorizontal{
+        display: none;
+    }
+}
+
+@media(max-height: 600px){
+    .gridVertical{
+        display: none;        
+    }
+    .gridHorizontal{
+        display: flex;
+    }
+}

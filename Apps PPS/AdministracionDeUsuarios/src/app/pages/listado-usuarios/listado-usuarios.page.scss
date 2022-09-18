@@ -1,0 +1,27 @@
+ion-spinner
+{
+  width: 50px;
+  height: 50px;
+}
+
+.contenedor
+{
+    height: 80%; 
+    width: 100%; 
+    overflow-y: auto;
+}
+
+.global {
+    height: 550px;
+    width: 100%;
+    overflow-y: scroll;
+} 
+
+.global2 {
+    height: 650px;
+    width: 100%;
+    overflow-y: scroll;
+}
+#lista {
+    height: auto;
+}

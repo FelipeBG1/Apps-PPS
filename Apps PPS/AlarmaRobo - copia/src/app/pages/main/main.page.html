@@ -1,0 +1,51 @@
+<ion-app>
+<ion-content>
+    <div style="height: 75%; width: 100%; padding-left: 2%; padding-right: 2%; border-radius: 30px; margin-top: 5%;" *ngIf="!this.activada">
+      <div align="center" style="margin-top: 2%;">
+        <ion-button size="large" fill="clear" style="border-radius: 30px; background-color: #ed442a; color: white;" (click)="logOut()">
+          <ion-text style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Cerrar sesión</ion-text>
+        </ion-button>
+      </div>
+      
+      <div align="center" style="height: 100%; padding: 20px; margin-top: 16%; background-color: rgb(86,60,57); border-radius: 30px;" (click)="encenderAlarma()">
+        <img src="../../../assets/image (6).png" style=" margin-top: 30%; display: block; margin-bottom: 8%;">
+      </div>
+  
+    
+    </div>
+
+  
+    <div style="height: 75%; width: 100%; padding-left: 2%; padding-right: 2%; border-radius: 30px; margin-top: 5%;" *ngIf="this.activada">
+      <div align="center">
+        <form [formGroup]='form' (ngSubmit)="this.apagarAlarma()" style="margin-top:3%">  
+          <ion-item style="--border-radius: 30px; padding-left: 3%; padding-right: 3%;" color="dark">
+            <ion-input type="password" clear-on-edit="false" placeholder="Contraseña"  formControlName='password' name="password" required></ion-input>
+          </ion-item>
+          <ion-button type="submit" fill="clear" expand="block" [disabled]='form.invalid' style="border-radius: 30px; background-color: #ed442a; color: white; margin-left: 3%; margin-right: 3%; margin-top: 2%;">
+            <ion-text>Desactivar</ion-text>
+          </ion-button>
+        </form>
+      </div>
+      <div align="center" style="display: block; padding: 20px; margin-top: 8%; background-color: rgb(242,43,12); border-radius: 30px;">
+        <img src="../../../assets/icono centro.png" style=" margin-top: 30%; display: block; margin-bottom: 30%;">
+      </div>
+    </div>
+  
+    <ion-spinner *ngIf="this.as.loading" name="crescent" style="display: block; position: inherit; margin:auto;width: 40px; height: 40px; margin-top: 1.5rem; z-index: 101; color: rgb(242,43,12);"></ion-spinner>
+  
+</ion-content>
+</ion-app>
+
+
+<!-- <ion-app>
+  <ion-content>
+   <h1 style="text-align: center;">Se inició sesión correctamente</h1>
+   <div style="text-align: center;">
+     <ion-button color="dark" (click)='logOut()'>Cerrar sesión</ion-button>
+   </div>
+   <div style="text-align: center; margin-top: 30px;">
+    <ion-spinner name="crescent" *ngIf="this.as.loading"></ion-spinner>
+  </div>
+  </ion-content>
+</ion-app>
+ -->

@@ -1,0 +1,39 @@
+ion-spinner
+{
+  width: 50px;
+  height: 50px;
+}
+
+::ng-deep .mat-tab-label .mat-tab-label-content {
+  font-size: 20px;
+  color: black;
+}
+
+.icon
+{
+  border-style: solid;
+
+  border-color: rgba(37, 37, 37, 0.463);
+  border-radius: 3px;
+  box-shadow: 2px 5px 4px 8px #181818d8;
+  font-size: 250px;
+  padding: 25px;
+  color: black;
+  background-color: #5ea8ae;
+}
+
+
+img
+{
+  border-style: solid;
+
+  border-color: rgba(37, 37, 37, 0.463);
+  border-radius: 3px;
+  box-shadow: 2px 5px 4px 8px #181818d8;
+}
+
+ion-content
+{
+  --background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url("../../../assets/otro\ fondo.png") no-repeat; 
+  font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

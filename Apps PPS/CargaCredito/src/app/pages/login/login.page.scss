@@ -1,0 +1,36 @@
+ion-spinner
+{
+  width: 50px;
+  height: 50px;
+}
+
+.invalid
+{
+  color: #fa3434;
+}
+
+ion-content
+{
+  --background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)), url("../../../assets/fondo\ blur\ naranja.png") no-repeat;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.items {
+ 
+  --background: #179942af;
+  position: relative;
+  color: white;
+}
+
+.grupo {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+  margin-bottom: 15%;
+  align-items: center;
+  font-size: larger;
+}
+
+.boton {
+  margin: 5px;
+}

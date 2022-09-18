@@ -1,0 +1,12 @@
+{
+	"appId": "io.ionic.starter5",
+	"appName": "Carga Crédito",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"SplashScreen": {
+			"launchAutoHide": false,
+			"showSpinner": false
+		}
+	}
+}

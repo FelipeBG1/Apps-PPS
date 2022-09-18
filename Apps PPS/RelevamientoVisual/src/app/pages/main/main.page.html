@@ -1,0 +1,153 @@
+<!-- 
+      <ion-app>
+        <ion-content>
+          <div style="height: 100%;">
+            
+              <ion-grid style="height: 100%; display: flex; flex-flow: column;">
+                <ion-row style="flex-grow: 1; height: 40%;">
+                  <ion-col align="center">
+                    <img src="../../../assets/all-bong-JDN-_FIqB3k-unsplash.jpg"  width="95%" height="100%" (click)="mostrarCosasLindas()"/>
+                  </ion-col>
+                </ion-row>
+                <ion-row style="flex-grow: 1; height: 40%;">
+                  <ion-col style="height: 100%;" align="center">        
+                    <img src="../../../assets/pexels-laura-tancredi-7078229.jpg"  width="95%" height="100%" (click)="mostrarCosasFeas()"/>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>      
+      
+            
+                <div style="padding: 15px;" *ngIf="this.tema != 0">
+                  <app-lindas-feas [tema]="this.tema"></app-lindas-feas>
+                </div>
+          
+              
+                 <ion-grid style="height: 100%; display: flex; flex-flow: column;" *ngIf="!this.eleccion">
+                  <ion-row style="flex-grow: 1;">
+                    <ion-col align="center" style="margin-bottom: 2%">
+                        <ion-icon name="images-sharp" class="icon" (click)="cargarPerfil(1)"></ion-icon>     
+                    </ion-col>
+                  </ion-row>
+                  
+                  <ion-row style="flex-grow: 1;">
+                    <ion-col align="center">
+                      <ion-icon name="bar-chart-sharp" class="icon" (click)="cargarPerfil(2)"></ion-icon>     
+                    </ion-col>
+                  </ion-row>       
+                </ion-grid>  
+      
+               
+          </div>
+      
+            <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="this.index == 2">
+              <ion-fab-button color="dark" style="font-size: 30px;">
+                <ion-icon name="settings-sharp"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-list side="start">
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="logOut()">
+                  <ion-icon name="log-out-outline" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" *ngIf="this.eleccion && this.perfil == 2" (click)="cargarPerfil(1)">
+                  <ion-icon name="images-sharp" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" *ngIf="this.eleccion && this.perfil == 1" (click)="cargarPerfil(2)">
+                  <ion-icon name="bar-chart-sharp" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>
+              </ion-fab-list>
+            </ion-fab>
+      
+            <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="this.index == 1">
+              <ion-fab-button color="dark" style="font-size: 30px;">
+                <ion-icon name="settings-sharp"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-list side="start">
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="subirFoto()">
+                  <ion-icon name="add-circle-sharp" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>
+              </ion-fab-list>
+            </ion-fab>
+            
+      </ion-content>
+      </ion-app> -->
+      
+      <ion-app>
+        <ion-content>
+          <ion-header *ngIf="this.tema != 0 || this.perfil != 0">
+            <ion-toolbar color="light">
+              <ion-title *ngIf="this.tema == 1 && this.perfil == 0" style="font-size: 30px;">Cosas Lindas</ion-title>
+              <ion-title *ngIf="this.tema == 2 && this.perfil == 0" style="font-size: 30px;">Cosas Feas</ion-title>
+              <ion-title *ngIf="this.perfil != 0" style="font-size: 30px;">Mis Fotos</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <div style="height: 100%;">       
+              <ion-grid style="height: 100%; display: flex; flex-flow: column;" *ngIf="tema == 0 && this.perfil == 0">
+                <ion-row style="flex-grow: 1; height: 35%;">
+                  <ion-col align="center">
+                    <img src="../../../assets/lindas.png"  width="95%" height="100%" (click)="mostrarCosasLindas()"/>
+                  </ion-col>
+                </ion-row>
+                <ion-row style="flex-grow: 1; height: 35%; margin-top: 5%;">
+                  <ion-col style="height: 100%;" align="center">        
+                    <img src="../../../assets/feas.png"  width="95%" height="100%" (click)="mostrarCosasFeas()"/>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>      
+      
+            
+                <div style="padding: 15px;" *ngIf="this.tema != 0 && this.perfil == 0">
+                  <app-lindas-feas [tema]="this.tema"></app-lindas-feas>
+                </div>
+          
+                <div style="padding: 15px;" *ngIf="this.perfil != 0">
+                  <app-perfil [perfil]="this.perfil"></app-perfil>
+                </div>
+              
+          </div>
+      
+            <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="this.tema != 0 || this.perfil != 0">
+              <ion-fab-button color="dark" style="font-size: 30px;">
+                <ion-icon name="settings-sharp"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-list side="top">
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="cargarPerfil(0)" *ngIf="this.perfil != 0">
+                  <ion-icon name="folder-open" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="cargarPerfil(1)" *ngIf="this.perfil != 1">
+                  <ion-icon name="images-sharp" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="subirFoto()" *ngIf="this.perfil == 0">
+                  <ion-icon name="add-circle-sharp" style="font-size: 40px;"></ion-icon>
+                </ion-fab-button>
+              </ion-fab-list>
+              <ion-fab-list side="start">
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="logOut()">
+                  <ion-icon name="log-out-outline" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>              
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="volverInicio()">
+                  <ion-icon name="home" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>
+              </ion-fab-list>
+            </ion-fab>
+
+
+            <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="this.tema == 0 && this.perfil == 0">
+              <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="logOut()">
+                <ion-icon name="log-out-outline" style="font-size: 30px;"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+      
+           
+            <!-- <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+              <ion-fab-button color="dark" style="font-size: 30px;">
+                <ion-icon name="settings-sharp"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-list side="start">
+                <ion-fab-button color="dark" style="width: 50px; height: 50px;" (click)="subirFoto()">
+                  <ion-icon name="add-circle-sharp" style="font-size: 30px;"></ion-icon>
+                </ion-fab-button>
+              </ion-fab-list>
+            </ion-fab> -->
+            <ion-spinner *ngIf="this.as.loading" name="crescent" style="display: block; position: inherit; margin:auto;width: 40px; height: 40px; margin-top: 1.5rem; z-index: 101; color: #980000;"></ion-spinner>
+      </ion-content>
+      </ion-app>
+      

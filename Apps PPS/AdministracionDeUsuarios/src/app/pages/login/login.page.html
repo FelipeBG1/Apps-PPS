@@ -1,0 +1,75 @@
+<ion-app style="overflow: hidden;">
+  <ion-content>
+      <div class="fondo">
+      <div align="center" style="padding: 15px;">
+        <h1 style="font-size: 40px; text-align: center; margin-top: 10%; color: white;">
+          Administración de Usuarios
+        </h1>
+
+
+        <div style="margin-top: 10%;">
+          <form [formGroup]='form' (ngSubmit)="this.login()">
+            <ion-item class="items" style="--border-radius: 6px; margin-top: 25px; padding-left: 3%; padding-right: 3%;">
+              <ion-label >Correo: </ion-label>
+              <ion-input type="email" placeholder="Correo" formControlName='email' name="email" required></ion-input>
+            </ion-item>
+              <div style="margin-bottom: 5%;">
+                <small class="invalid" *ngIf="form.controls.email.errors?.required && form.controls.email.touched">El correo es requerido</small>
+                <small class="invalid" *ngIf="form.controls.email.errors?.email">No es un correo válido</small>
+              </div>
+
+
+            <ion-item class="items" style="margin-top: 15%; --border-radius: 6px; padding-left: 3%; padding-right: 3%;" >
+              <ion-label>Contraseña: </ion-label>
+              <ion-input type="password" placeholder="Contraseña" formControlName='password' name="password" required></ion-input>
+            </ion-item>
+              <small class="invalid" *ngIf="form.controls.password.errors?.required && form.controls.password.touched">La contraseña es requerida</small>
+              <small class="invalid" *ngIf="form.controls.password.errors?.minlength">La contraseña debe tener 6 caracteres o más</small>
+            
+          </form>   
+
+        <div style="margin-top: 8%;">
+          <ion-spinner name="crescent" *ngIf="this.as.loading" color="dark"></ion-spinner>
+        </div>      
+    
+            
+            <img src="../../../assets/icono centro.png" width="100px" height="100px" style="border-radius: 20px; margin-top: 8%;"/>
+            
+            <!--
+
+              <ion-row style="text-align: center; margin-bottom: 5%; margin-top: 5%;">
+                <ion-col>
+                  <ion-button fill="outline" (click)='cargarDatos(3)' style="--border-radius: 5px; --border-color: #FDD304; color: white;">Administrador</ion-button>  
+                </ion-col>         
+                <ion-col>
+                  <ion-button fill="outline" (click)='cargarDatos(1)' style="--border-radius: 5px; --border-color: #FDD304; color: white;">Anónimo</ion-button>              
+                </ion-col>
+                <ion-col>         
+                  <ion-button fill="outline" (click)='cargarDatos(2)' style="--border-radius: 5px; --border-color: #FDD304; color: white;">Casual</ion-button>     
+                </ion-col>
+                
+              </ion-row>
+            -->
+            <div style="padding-left: 2%; padding-right: 2%; margin-bottom: 25px; margin-top: 10%;">
+              <ion-button mat-button [matMenuTriggerFor]="perfiles" fill="clear" style="border-radius: 5px; background-color: #FDD304; color: black;">Perfiles</ion-button>
+              <mat-menu #perfiles="matMenu" class="customize">
+                <button  mat-menu-item style="color: white;" (click)="cargarDatos(3)">Administrador</button>
+                <button  mat-menu-item style="color: white;" (click)="cargarDatos(1)">Anónimo</button>
+                <button  mat-menu-item style="color: white;" (click)="cargarDatos(2)">Invitado</button>
+              </mat-menu>
+            </div>
+
+            <div style="padding-left: 2%; padding-right: 2%; margin-bottom: 25px; margin-top: 22%;">
+                <ion-button fill="clear" expand="block" [disabled]='form.invalid' (click)="login()" style="border-radius: 5px; background-color: #FDD304; color: black;">
+                      <ion-text>Iniciar Sesión</ion-text>
+                </ion-button>
+            </div>
+         
+        </div>
+    
+      </div>
+    </div>
+    </ion-content>
+</ion-app>
+
+

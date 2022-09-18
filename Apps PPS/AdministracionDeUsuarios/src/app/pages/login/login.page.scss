@@ -1,0 +1,30 @@
+ion-spinner
+{
+  width: 50px;
+  height: 50px;
+}
+
+.invalid
+{
+  color: #fa3434;
+}
+
+ion-content
+{
+  --background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)), url("../../../assets/fondo\ blur\ amarillo.png") no-repeat; 
+}
+
+.items {
+ 
+  --background: #9c0757b6;
+  position: relative;
+}
+
+.boton
+{
+  background: #9c0757b6;
+}
+
+::ng-deep .customize {
+  background: #9c0757f2;
+}

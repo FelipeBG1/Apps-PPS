@@ -1,0 +1,28 @@
+ion-spinner
+{
+  width: 50px;
+  height: 50px;
+}
+
+.items
+{
+  --background: rgba(3, 3, 3, 0.885);
+  --border-radius: 6px;
+}
+
+ion-item {
+
+  --border-color: var(--ion-color-danger, #9c0757b6);
+  --highlight-background: #FDD304;
+  --ripple-color : #FDD304;
+}
+
+ion-item.item-has-focus > ion-label{
+  color: #FDD304 !important;
+}
+
+
+.invalid
+{
+    color: rgb(241,69,92);
+}

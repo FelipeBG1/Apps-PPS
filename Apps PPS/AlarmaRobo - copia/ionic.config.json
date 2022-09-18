@@ -1,0 +1,8 @@
+{
+  "name": "AlarmaRobo",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

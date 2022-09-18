@@ -1,0 +1,60 @@
+<ion-app style="overflow: hidden;">
+  <ion-content>
+      <div class="fondo">
+      <div align="center" style="padding: 15px;">
+        <img src="../../../assets/image.png" width="100px" height="100px" style="border-radius: 20px; margin-top: 15px;"/>
+        <h1 style="font-size: 40px; text-align: center; margin-top: 10%; color: white;">
+          Relevamiento Visual
+        </h1>
+    
+        <div>
+          <ion-grid style="display: flex; flex-flow: column;">
+          <ion-row style="text-align: center; margin-bottom: 15%; margin-top: 15%; flex-grow: 1;">
+            <ion-col>
+              <ion-button fill="outline" (click)='cargarDatos(1)' style="--border-color: #50A4AB; color: white; --border-width: 3px;">Anónimo</ion-button>              
+            </ion-col>
+            <ion-col>         
+              <ion-button fill="outline" (click)='cargarDatos(2)' style="--border-color: #50A4AB; color: white; --border-width: 3px;">Invitado</ion-button>     
+            </ion-col>
+            
+              <ion-col>
+                <ion-button fill="outline" (click)='cargarDatos(3)' style="--border-color: #50A4AB; color: white; --border-width: 3px;">Administrador</ion-button>  
+              </ion-col>         
+          </ion-row>
+        </ion-grid>
+         
+            <form [formGroup]='form' (ngSubmit)="this.login()">
+              <ion-item class="items" style="margin-top: 20px; --border-radius: 6px; padding-left: 3%; padding-right: 3%;">
+                  <ion-label>Correo: </ion-label>
+                  <ion-input type="email" placeholder="Correo"  formControlName='email' name="email" required></ion-input>
+                </ion-item>
+                <small class="invalid" *ngIf="form.controls.email.errors?.required && form.controls.email.touched">El correo es requerido</small>
+                <small class="invalid" *ngIf="form.controls.email.errors?.email">No es un correo válido</small>      
+                <ion-item class="items" style="margin-top: 20px; --border-radius: 6px; padding-left: 3%; padding-right: 3%;">
+                  <ion-label>Contraseña: </ion-label>
+                  <ion-input type="password" placeholder="Contraseña" formControlName='password' name="password" required></ion-input>
+                </ion-item>
+                <small class="invalid" *ngIf="form.controls.password.errors?.required && form.controls.password.touched">La contraseña es requerida</small>
+                <small class="invalid" *ngIf="form.controls.password.errors?.minlength">La contraseña debe tener 6 caracteres o más</small>
+                
+                <div style="margin-top: 4%;" >
+                  <ion-spinner name="crescent" *ngIf="this.as.loading" color="dark"></ion-spinner>
+                </div>
+
+                <div style="margin-top:10%; padding-left: 2%; padding-right: 2%;">
+      
+                  <ion-button fill="clear" expand="block" [disabled]='form.invalid' (click)="login()" style="border-radius: 3px; background-color: #ff000098; color: white;">
+                    <ion-text>Iniciar Sesión</ion-text>
+                  </ion-button>
+                  <!--
+                    <ion-button type="submit" fill="solid" expand="block" color="dark" [disabled]='form.invalid' >Iniciar sesión</ion-button>
+                  -->
+                </div>
+            </form>         
+        </div>
+    
+        
+      </div>
+    </div>
+    </ion-content>
+</ion-app>
